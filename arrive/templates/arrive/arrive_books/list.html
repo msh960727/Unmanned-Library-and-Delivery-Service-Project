@@ -1,0 +1,21 @@
+{% extends "library/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Now you can read books{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div id="main" class="arrive_book_list">
+        <h1>Your borrow list</h1>
+        {% for arrivebook in books %}
+            <div class="item">
+                <a href="#">
+
+                </a><br>
+                {{ arrivebook.title }}</a><br>
+                author:{{ arrivebook.author }} (publisher:{{ arrivebook.publisher }})
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

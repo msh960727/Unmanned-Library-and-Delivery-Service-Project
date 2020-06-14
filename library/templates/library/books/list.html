@@ -1,0 +1,21 @@
+{% extends "library/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Books{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div id="main" class="book-list">
+        <h1>Books</h1>
+        {% for book in books %}
+            <div class="item">
+                <a href="#">
+                    <img src="{% if book.image_url %}{{ book.image_url }}{% else %}{% static 'library/no_image.png' %}{% endif %}" height="200">
+                </a><br>
+                <a href="{{ book.get_absolute_url }}">{{ book.title }}</a><br>
+                author:{{ book.author }} (publisher:{{ book.publisher }})
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
